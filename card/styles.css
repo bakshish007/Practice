@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: hsl(30, 38%, 92%);
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-width: 375px;
+  }
+  
+  .card-image {
+    position: relative;
+  }
+  
+  .desktop-image {
+    display: block;
+    width: 100%;
+  }
+  
+  .mobile-image {
+    display: none;
+    width: 100%;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .category {
+    color: hsl(228, 12%, 48%);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .product-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin: 10px 0;
+    color: hsl(212, 21%, 14%);
+  }
+  
+  .description {
+    font-size: 14px;
+    color: hsl(228, 12%, 48%);
+    line-height: 1.5;
+  }
+  
+  .pricing {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+  }
+  
+  .current-price {
+    font-size: 24px;
+    color: hsl(158, 36%, 37%);
+    margin-right: 10px;
+  }
+  
+  .original-price {
+    font-size: 14px;
+    color: hsl(228, 12%, 48%);
+    text-decoration: line-through;
+  }
+  
+  .add-to-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(158, 36%, 37%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .add-to-cart svg {
+    margin-right: 10px;
+  }
+  
+  .add-to-cart:hover {
+    background-color: darkgreen;
+  }
+  
+  @media (min-width: 768px) {
+    .card {
+      flex-direction: row;
+      max-width: 600px;
+    }
+  
+    .card-image {
+      width: 50%;
+    }
+  
+    .desktop-image {
+      display: block;
+    }
+  
+    .mobile-image {
+      display: none;
+    }
+  
+    .card-content {
+      width: 50%;
+      padding: 30px;
+    }
+  
+    .product-name {
+      font-size: 28px;
+    }
+  
+    .current-price {
+      font-size: 28px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .desktop-image {
+      display: none;
+    }
+  
+    .mobile-image {
+      display: block;
+    }
+  }
+  
