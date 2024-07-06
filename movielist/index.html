@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./index.css" />
+
+    <style>
+      @font-face {
+        font-family: "SF Pro Text";
+        src: url("./public/fonts/SF-Pro-Text-Light.otf");
+        font-weight: 300;
+      }
+      @font-face {
+        font-family: "SF Pro Text";
+        src: url("./public/fonts/SF-Pro-Text-Regular.otf");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "SF Pro Text";
+        src: url("./public/fonts/SF-Pro-Text-Medium.otf");
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: "SF Pro Text";
+        src: url("./public/fonts/SF-Pro-Text-Semibold.otf");
+        font-weight: 600;
+      }
+      @font-face {
+        font-family: "SF Pro Text";
+        src: url("./public/fonts/SF-Pro-Text-Bold.otf");
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="movielist">
+      <div class="left-bar">
+        <div class="logo-wrapper">
+          <img
+            class="logo-icon"
+            loading="lazy"
+            alt=""
+            src="./public/images/Logo.png"
+          />
+        </div>
+        <div class="navigation">
+          <div class="top-level-nav">
+            <div class="search-field">
+              <div class="div">􀊫</div>
+              <input class="search" placeholder="Search" type="text" />
+            </div>
+            <div class="navigation-tabs">
+              <div class="nav-tab">
+                <div class="div1">􀎞</div>
+                <a class="home">Home</a>
+              </div>
+              <div class="nav-tab1">
+                <div class="div2">􀵱</div>
+                <a class="library">Library</a>
+              </div>
+              <div class="nav-tab2">
+                <div class="parent">
+                  <div class="div3">􀉩</div>
+                  <a class="friends">Friends</a>
+                </div>
+                <div class="home-tab-wrapper">
+                  <div class="home-tab">1</div>
+                </div>
+              </div>
+            </div>
+            <div class="nav-tab3">
+              <div class="icon">
+                <div class="div4">􀣔</div>
+              </div>
+              <div class="history">History</div>
+            </div>
+          </div>
+        </div>
+        <div class="edit-action">
+          <div class="icon1">􀈎</div>
+        </div>
+        <div class="user-lists">
+          <div class="lists-header">
+            <a class="my-lists">My lists</a>
+          </div>
+          <div class="lists">
+            <div class="list">
+              <img
+                class="icon2"
+                loading="lazy"
+                alt=""
+                src="./public/images/icon (1).png"
+              />
+
+              <div class="list-names">
+                <div class="action">Action</div>
+              </div>
+            </div>
+            <div class="list1">
+              <img
+                class="icon3"
+                loading="lazy"
+                alt=""
+                src="./public/images/icon (2).png"
+              />
+
+              <div class="detectives-wrapper">
+                <div class="detectives">Detectives</div>
+              </div>
+            </div>
+            <div class="list2">
+              <img
+                class="icon4"
+                loading="lazy"
+                alt=""
+                src="./public/images/icon (3).png"
+              />
+
+              <div class="fantasy-wrapper">
+                <div class="fantasy">Fantasy</div>
+              </div>
+            </div>
+            <div class="list3">
+              <img
+                class="icon5"
+                loading="lazy"
+                alt=""
+                src="./public/images/icon (4).png"
+              />
+
+              <div class="space-wrapper">
+                <div class="space">Space</div>
+              </div>
+            </div>
+            <div class="list4">
+              <img
+                class="icon6"
+                loading="lazy"
+                alt=""
+                src="./public/images/icon (5).png"
+              />
+
+              <div class="blockbasters-wrapper">
+                <div class="blockbasters">Blockbasters</div>
+              </div>
+            </div>
+            <div class="list5">
+              <img
+                class="icon7"
+                loading="lazy"
+                alt=""
+                src="./public/images/icon (6).png"
+              />
+
+              <div class="shitty-but-i-love-it-wrapper">
+                <div class="shitty-but-i">Shitty but I love it</div>
+              </div>
+            </div>
+            <div class="list6">
+              <div class="icon8">
+                <div class="div5">􀬉</div>
+              </div>
+              <div class="my-top-100-wrapper">
+                <div class="my-top-100">My Top 100</div>
+              </div>
+            </div>
+          </div>
+          <div class="cta">
+            <div class="icon9">
+              <b class="b">􀅼</b>
+            </div>
+            <div class="create-list-wrapper">
+              <b class="create-list">Create list</b>
+            </div>
+          </div>
+        </div>
+        <div class="user-settings-container">
+          <div class="avatar-32">
+            <div class="div6">􀬉</div>
+            <div class="avatar"></div>
+          </div>
+          <div class="user-name">
+            <b class="chan-geme">Chan Geme</b>
+            <div class="changeme">@changeme</div>
+          </div>
+          <div class="user-options">
+            <div class="options">
+              <div class="div7">􀍠</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="content">
+        <div class="movies-header-parent">
+          <div class="movies-header">
+            <a class="section-title">Your Recent Movies</a>
+            <div class="movie-list">
+              <div class="movie-card">
+                <img
+                  class="movie-cover-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/images/greenknight.png"
+                />
+
+                <div class="movie-card-info">
+                  <b class="movie-title">The Green Knight (2021)</b>
+                  <div class="from-the-list">
+                    <div class="div8">􀬉</div>
+                    <div class="fantasy1">Fantasy</div>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card1">
+                <img
+                  class="movie-cover-icon1"
+                  loading="lazy"
+                  alt=""
+                  src="./public/images/sonic.png"
+                />
+
+                <div class="movie-card-info1">
+                  <b class="movie-title1">Sonic The Hedgehog 2 (2022)</b>
+                  <div class="from-the-list1">
+                    <div class="div9">􀬉</div>
+                    <div class="action1">Action</div>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card2">
+                <img
+                  class="movie-cover-icon2"
+                  loading="lazy"
+                  alt=""
+                  src="./public/images/lostcity.png"
+                />
+
+                <div class="movie-card-info2">
+                  <b class="movie-title2">The Lost City (2022)</b>
+                  <div class="from-the-list2">
+                    <div class="div10">􀬉</div>
+                    <div class="action2">Action</div>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card3">
+                <img
+                  class="movie-cover-icon3"
+                  loading="lazy"
+                  alt=""
+                  src="./public/images/uncharted.png"
+                />
+
+                <div class="movie-card-info3">
+                  <b class="movie-title3">Uncharted (2022)</b>
+                  <div class="from-the-list3">
+                    <div class="div11">􀬉</div>
+                    <div class="action3">Action</div>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card4">
+                <img
+                  class="movie-cover-icon4"
+                  loading="lazy"
+                  alt=""
+                  src="./public/images/northman.png"
+                />
+
+                <div class="movie-card-info4">
+                  <b class="movie-title4">The Northman (2022)</b>
+                  <div class="from-the-list4">
+                    <div class="div12">􀬉</div>
+                    <div class="my-top-250">My Top 250</div>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card5">
+                <img
+                  class="movie-cover-icon5"
+                  loading="lazy"
+                  alt=""
+                  src="./public/images/everything.png"
+                />
+
+                <div class="movie-card-info5">
+                  <b class="movie-title5"
+                    >Everything Everywhere All at Once (2022)</b
+                  >
+                  <div class="from-the-list5">
+                    <div class="div13">􀉩</div>
+                    <div class="with-dave-s">with Dave S.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="event-parent">
+            <div class="event">
+              <div class="event-header">
+                <div class="section-title1">Movie nights</div>
+                <b class="section-action">􀅼 Create event</b>
+              </div>
+              <img
+                class="event-cover-icon"
+                loading="lazy"
+                alt=""
+                src="./public/images/batmancover.png"
+              />
+
+              <div class="event-info">
+                <b class="event-title">The Batman and Friends</b>
+                <div class="event-summary">
+                  <div class="event-description">
+                    <b>10:00 PM</b>
+                    <span class="hi-there-me">
+                      Hi there! Me and Lex watching “The Batman” tonight. Join
+                      us it will be totely fun))</span
+                    >
+                  </div>
+                  <div class="attendees">
+                    <img
+                      class="avatar-321"
+                      loading="lazy"
+                      alt=""
+                      src="./public/images/elonmusk.png"
+                    />
+
+                    <div class="name-wrapper">
+                      <div class="name">Elon Mask</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="event-buttons">
+                  <div class="button-active">
+                    <div class="yep-im-in">Yep, I’m in</div>
+                  </div>
+                  <div class="notification">
+                    <div class="notify-me">􀋙</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="events">
+              <img
+                class="event-cover-icon1"
+                loading="lazy"
+                alt=""
+                src="./public/images/northmancover.png"
+              />
+
+              <div class="event-details">
+                <b class="event-title1">“The Northman” Nicht</b>
+                <div class="event-description1">
+                  <b>9:10 PM</b>
+                  <span class="hi-there-me1">
+                    Hi there! Me and Lex watching “The Batman” tonight. Join us
+                    it will be totely fun))</span
+                  >
+                </div>
+                <div class="event-actions">
+                  <img
+                    class="avatar-322"
+                    loading="lazy"
+                    alt=""
+                    src="./public/images/elonmusk.png"
+                  />
+
+                  <div class="name-container">
+                    <div class="name1">Elon Mask</div>
+                  </div>
+                </div>
+              </div>
+              <div class="button-defoult">
+                <div class="yap-im-in">Yap, I’m in</div>
+              </div>
+            </div>
+            <div class="events1">
+              <img
+                class="event-cover-icon2"
+                loading="lazy"
+                alt=""
+                src="./public/images/everythingcover.png"
+              />
+
+              <div class="event-title-parent">
+                <b class="event-title2"
+                  >Everyone Everything Everywhere All at Once</b
+                >
+                <div class="event-description-parent">
+                  <div class="event-description2">
+                    <b>9:00 PM</b>
+                    <span class="hi-there-me2">
+                      Hi there! Me and Lex watching “The Batman” tonight. Join
+                      us it will be totely fun))</span
+                    >
+                  </div>
+                  <div class="participant">
+                    <img
+                      class="avatar-323"
+                      loading="lazy"
+                      alt=""
+                      src="./public/images/elonmusk.png"
+                    />
+
+                    <div class="name-frame">
+                      <div class="name2">Elon Mask</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="button-defoult1">
+                  <div class="yap-im-in1">Yap, I’m in</div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
