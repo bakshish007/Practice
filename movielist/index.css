@@ -1081,7 +1081,7 @@ body {
   color: var(--color-whitesmoke-200);
 }
 .movies-header {
-  height: 26.5rem;
+  height: 28.5rem;
   flex-direction: column;
   gap: 1.5rem;
 }
