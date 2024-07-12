@@ -4,33 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, width=device-width" />
   <link rel="stylesheet" href="./index.css" />
-  <style>
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("./public/fonts/SF-Pro-Text-Light.otf");
-      font-weight: 300;
-    }
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("./public/fonts/SF-Pro-Text-Regular.otf");
-      font-weight: 400;
-    }
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("./public/fonts/SF-Pro-Text-Medium.otf");
-      font-weight: 500;
-    }
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("./public/fonts/SF-Pro-Text-Semibold.otf");
-      font-weight: 600;
-    }
-    @font-face {
-      font-family: "SF Pro Text";
-      src: url("./public/fonts/SF-Pro-Text-Bold.otf");
-      font-weight: 700;
-    }
-  </style>
+  <link rel="stylesheet" href="https://unpkg.com/simplebar/dist/simplebar.min.css">
+  <script src="https://unpkg.com/simplebar/dist/simplebar.min.js"></script>
 </head>
 <body>
   <div class="movielist">
@@ -42,28 +17,28 @@
         <div class="top-level-nav">
           <div class="search-field">
             <div class="div">􀊫</div>
-            <input class="search" placeholder="Search" type="text" />
+            <input class="search" placeholder="Search" type="text" id="search-input" />
           </div>
           <div class="navigation-tabs">
-            <div class="nav-tab">
+            <div class="nav-tab" id="nav-home">
               <div class="div1">􀎞</div>
               <a class="home">Home</a>
             </div>
-            <div class="nav-tab1">
+            <div class="nav-tab1" id="nav-library">
               <div class="div2">􀵱</div>
               <a class="library">Library</a>
             </div>
-            <div class="nav-tab2">
+            <div class="nav-tab2" id="nav-friends">
               <div class="parent">
                 <div class="div3">􀉩</div>
                 <a class="friends">Friends</a>
               </div>
-              <div class="home-tab-wrapper">
+              <!-- <div class="home-tab-wrapper">
                 <div class="home-tab">1</div>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div class="nav-tab3">
+          <div class="nav-tab3" id="nav-history">
             <div class="icon">
               <div class="div4">􀣔</div>
             </div>
@@ -76,63 +51,34 @@
       </div>
       <div class="user-lists">
         <div class="lists-header">
-          <a class="my-lists">My lists</a>
+          <a class="my-lists">My Lists</a>
         </div>
-        <div class="lists">
-          <div class="list">
-            <img class="icon2" loading="lazy" alt="" src="./public/images/icon (1).png" />
-            <div class="list-names">
-              <div class="action">Action</div>
-            </div>
-          </div>
-          <div class="list1">
-            <img class="icon3" loading="lazy" alt="" src="./public/images/icon (2).png" />
-            <div class="detectives-wrapper">
-              <div class="detectives">Detectives</div>
-            </div>
-          </div>
-          <div class="list2">
-            <img class="icon4" loading="lazy" alt="" src="./public/images/icon (3).png" />
-            <div class="fantasy-wrapper">
-              <div class="fantasy">Fantasy</div>
-            </div>
-          </div>
-          <div class="list3">
-            <img class="icon5" loading="lazy" alt="" src="./public/images/icon (4).png" />
-            <div class="space-wrapper">
-              <div class="space">Space</div>
-            </div>
-          </div>
-          <div class="list4">
-            <img class="icon6" loading="lazy" alt="" src="./public/images/icon (5).png" />
-            <div class="blockbasters-wrapper">
-              <div class="blockbasters">Blockbasters</div>
-            </div>
-          </div>
-          <div class="list5">
-            <img class="icon7" loading="lazy" alt="" src="./public/images/icon (6).png" />
-            <div class="shitty-but-i-love-it-wrapper">
-              <div class="shitty-but-i">Shitty but I love it</div>
-            </div>
-          </div>
-          <div class="list6">
-            <div class="icon8">
-              <div class="div5">􀬉</div>
-            </div>
-            <div class="my-top-100-wrapper">
-              <div class="my-top-100">My Top 100</div>
-            </div>
-          </div>
+        <div id="user-lists-container" class="lists" style="padding: 10px;">
+          <!-- User lists will be dynamically added here -->
         </div>
-        <div class="cta">
-          <div class="icon9">
+        <!-- Create List Button and Input Field -->
+        <div class="cta" id="create-list" style="display: flex; align-items: center; cursor: pointer;">
+          <div class="icon9" style="margin-right: 10px;">
             <b class="b">􀅼</b>
           </div>
           <div class="create-list-wrapper">
             <b class="create-list">Create list</b>
           </div>
         </div>
+        <div id="list-input-container" class="search-field hidden" style="display: none;">
+          <input type="text" class="search" id="list-name-input" placeholder="Enter list name" style="padding: 10px; width: calc(100% - 80px); margin-right: 10px; border-radius: 4px; cursor: text; " />
+          <button id="save-list-name" style="cursor: pointer; width: 70px; height: 40px; padding: 10px; border: none; background-color: #333; color: white; border-radius: 4px;">Save</button>
+        </div>
       </div>
+      
+      <!-- Confirmation Popup -->
+      <div id="confirmation-popup" class="hidden" style="zoom: 130%; z-index: 999; display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background: white; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <p style="color: black;" id="confirmation-message"></p>
+        <button id="confirm-delete" style="margin-right: 10px; padding: 10px; background-color: red; color: white; border: none; border-radius: 4px;">Yes</button>
+        <button id="cancel-delete" style="padding: 10px; background-color: #333; color: white; border: none; border-radius: 4px;">No</button>
+      </div>
+      
+
       <div class="user-settings-container">
         <div class="avatar-32">
           <div class="div6">􀬉</div>
@@ -156,109 +102,263 @@
           <div id="movie-list" class="movie-list">
           </div>
         </div>
-        <footer class="event-parent">
-          <div class="event">
-            <div class="event-header">
-              <div class="section-title1">Movie nights</div>
-              <b class="section-action">􀅼 Create event</b>
-            </div>
-            <img class="event-cover-icon" loading="lazy" alt="" src="./public/images/batmancover.png" />
-            <div class="event-info">
-              <b class="event-title">The Batman and Friends</b>
-              <div class="event-summary">
-                <div class="event-description">
-                  <b>10:00 PM</b>
-                  <span class="hi-there-me">
-                    Hi there! Me and Lex watching “The Batman” tonight. Join us it will be totally fun</span>
-                </div>
-                <div class="attendees">
-                  <img class="avatar-321" loading="lazy" alt="" src="./public/images/elonmusk.png" />
-                  <div class="name-wrapper">
-                    <div class="name">Elon Mask</div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-buttons">
-                <div class="button-active">
-                  <div class="yep-im-in">Yep, I’m in</div>
-                </div>
-                <div class="notification">
-                  <div class="notify-me">􀋙</div>
-                </div>
-              </div>
-            </div>
+
+ <footer  style="display: flex; gap: var(--gap-base); justify-content: center; max-width: 100%; flex-direction: column; flex-wrap: nowrap; align-content: center; align-items: flex-start;" class="event-parent">
+  <div class="event-header-fixed" style="display: flex; gap: 20px; flex-direction: row;  flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;" >
+    <div class="section-title1">Movie nights</div>
+    <b class="section-action">􀅼 Create event</b>
+  </div>
+  <!-- Event 1 -->
+<div style="display: flex; gap: 10px;" class="allevents">
+  <div class="event">
+    <img class="event-cover-icon" loading="lazy" alt="" src="./public/images/batmancover.png" />
+    <div class="event-info">
+      <b class="event-title">The Batman and Friends</b>
+      <div class="event-summary">
+        <div class="event-description">
+          <b>10:00 PM</b>
+          <span class="hi-there-me">
+            Hi there! Me and Lex watching “The Batman” tonight. Join us it will be totally fun
+          </span>
+        </div>
+        <div class="event-actions">
+          <img class="avatar-321" loading="lazy" alt="" src="./public/images/elonmusk.png" />
+          <div class="name-wrapper">
+            <div class="name">Elon Mask</div>
           </div>
-          <div class="events">
-            <img class="event-cover-icon1" loading="lazy" alt="" src="./public/images/northmancover.png" />
-            <div class="event-details">
-              <b class="event-title1">“The Northman” Nicht</b>
-              <div class="event-description1">
-                <b>9:10 PM</b>
-                <span class="hi-there-me1">
-                  Hi there! Me and Lex watching “The Batman” tonight. Join us it will be totally fun</span>
-              </div>
-              <div class="event-actions">
-                <img class="avatar-322" loading="lazy" alt="" src="./public/images/elonmusk.png" />
-                <div class="name-container">
-                  <div class="name1">Elon Mask</div>
-                </div>
-              </div>
-            </div>
-            <div class="button-defoult">
-              <div class="yap-im-in">Yap, I’m in</div>
-            </div>
+        </div>
+      </div>
+      <div class="event-buttons">
+        <div class="button-default">
+          <div class="yep-im-in">Yep, I’m in</div>
+        </div>
+        <div class="notification">
+          <div class="notify-me">􀋙</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event 2 -->
+  <div class="event">
+    <img class="event-cover-icon" loading="lazy" alt="" src="./public/images/northmancover.png" />
+    <div class="event-info">
+      <b class="event-title">“The Northman” Night</b>
+      <div class="event-summary">
+        <div class="event-description">
+          <b>9:10 PM</b>
+          <span class="hi-there-me">
+            Hi there! Me and Lex watching “The Northman” tonight. Join us it will be totally fun
+          </span>
+        </div>
+        <div class="event-actions">
+          <img class="avatar-321" loading="lazy" alt="" src="./public/images/elonmusk.png" />
+          <div class="name-wrapper">
+            <div class="name">Elon Mask</div>
           </div>
-          <div class="events1">
-            <img class="event-cover-icon2" loading="lazy" alt="" src="./public/images/everythingcover.png" />
-            <div class="event-title-parent">
-              <b class="event-title2">Everyone Everything Everywhere All at Once</b>
-              <div class="event-description-parent">
-                <div class="event-description2">
-                  <b>6:00 PM</b>
-                  <span class="hi-there-me2">
-                    Hi there! Me and Lex watching “The Batman” tonight. Join us it will be totally fun</span>
-                </div>
-                <div class="attendees1">
-                  <img class="avatar-323" loading="lazy" alt="" src="./public/images/elonmusk.png" />
-                  <div class="name-frame">
-                    <div class="name2">Elon Mask</div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-buttons1">
-                <div class="button-active1">
-                  <div class="yep-im-in1">Yep, I’m in</div>
-                </div>
-                <div class="notification1">
-                  <div class="notify-me1">􀋙</div>
-                </div>
-              </div>
-            </div>
+        </div>
+      </div>
+      <div class="event-buttons">
+        <div class="button-default">
+          <div class="yep-im-in">Yep, I’m in</div>
+        </div>
+        <div class="notification">
+          <div class="notify-me">􀋙</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event 3 -->
+  <div class="event">
+    <img class="event-cover-icon" loading="lazy" alt="" src="./public/images/everythingcover.png" />
+    <div class="event-info">
+      <b class="event-title">Everyone Everything Everywhere All at Once</b>
+      <div class="event-summary">
+        <div class="event-description">
+          <b>6:00 PM</b>
+          <span class="hi-there-me">
+            Hi there! Me and Lex watching “Everyone Everything Everywhere All at Once” tonight. Join us it will be totally fun
+          </span>
+        </div>
+        <div class="event-actions">
+          <img class="avatar-321" loading="lazy" alt="" src="./public/images/elonmusk.png" />
+          <div class="name-wrapper">
+            <div class="name">Elon Mask</div>
           </div>
-        </footer>
+        </div>
+      </div>
+      <div class="event-buttons">
+        <div class="button-default">
+          <div class="yep-im-in">Yep, I’m in</div>
+        </div>
+        <div class="notification">
+          <div class="notify-me">􀋙</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</footer>
+        
       </div>
     </section>
   </div>
   <script>
-    const apiKey = '910237cecd377501040fdd6fffaca020';
-    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
-
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        const movieList = document.getElementById('movie-list');
-        data.results.forEach(movie => {
-          const movieElement = document.createElement('div');
-          movieElement.className = 'movie';
-          movieElement.innerHTML = `
-            <img style="width:200px" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
-            <h2 style="font-size:18px">${movie.title}</h2>
-            
-          `;
-          movieList.appendChild(movieElement);
+    document.addEventListener('DOMContentLoaded', () => {
+      const apiKey = 'b417109d';
+      const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=avengers&type=movie&page=1`;
+  
+      function fetchMovies(url) {
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const movieList = document.getElementById('movie-list');
+            movieList.innerHTML = ''; // Clear previous movie list
+  
+            if (data.Search) {
+              data.Search.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.className = 'movie-item';
+                movieElement.innerHTML = `
+                  <img style="width:200px" src="${movie.Poster}" alt="${movie.Title}" />
+                  <h2 style="font-size:15px">${movie.Title}</h2>
+                `;
+                movieList.appendChild(movieElement);
+              });
+            } else {
+              movieList.innerHTML = '<p>No movies found.</p>';
+            }
+          })
+          .catch(error => console.error('Error fetching data from OMDB:', error));
+      }
+  
+      function loadUserLists() {
+        const userLists = JSON.parse(localStorage.getItem('userLists')) || [];
+        userLists.reverse().forEach(listName => {
+          addUserListToDOM(listName);
         });
-      })
-      .catch(error => console.error('Error fetching data from TMDB:', error));
+      }
+  
+      function saveUserList(listName) {
+        const userLists = JSON.parse(localStorage.getItem('userLists')) || [];
+        userLists.push(listName);
+        localStorage.setItem('userLists', JSON.stringify(userLists));
+      }
+  
+      function addUserListToDOM(listName) {
+  const listNav = document.getElementById('user-lists-container');
+  const newListItem = document.createElement('div');
+  newListItem.className = 'list'; 
+  newListItem.style.display = 'flex';
+  newListItem.style.position = 'relative'
+  newListItem.style.alignItems = 'center';
+  newListItem.style.justifyContent = 'space-between';
+  newListItem.style.marginBottom = '10px';
+  newListItem.innerHTML = `
+    
+      <div class="list-name">${listName}</div>
+      <div class="delete-list" style="cursor: pointer; color: red; margin-left: 10px;">✖</div>
+   
+  `;
+  newListItem.querySelector('.delete-list').addEventListener('click', () => showConfirmationPopup(listName));
+
+  // Insert the new list item at the beginning of the list
+  listNav.prepend(newListItem);
+}
+  
+      function showConfirmationPopup(listName) {
+        const popup = document.getElementById('confirmation-popup');
+        const message = document.getElementById('confirmation-message');
+        message.textContent = `Are you sure you want to delete "${listName}" list?`;
+  
+        const confirmButton = document.getElementById('confirm-delete');
+        confirmButton.onclick = () => {
+          deleteList(listName);
+          hideConfirmationPopup();
+        };
+  
+        const cancelButton = document.getElementById('cancel-delete');
+        cancelButton.onclick = () => hideConfirmationPopup();
+  
+        popup.classList.remove('hidden');
+        popup.style.display = 'block';
+      }
+  
+      function hideConfirmationPopup() {
+        const popup = document.getElementById('confirmation-popup');
+        popup.classList.add('hidden');
+        popup.style.display = 'none';
+      }
+  
+      function deleteList(listName) {
+  let userLists = JSON.parse(localStorage.getItem('userLists')) || [];
+  userLists = userLists.filter(list => list !== listName);
+  localStorage.setItem('userLists', JSON.stringify(userLists));
+  loadUserLists(); // Reload user lists after deletion
+  location.reload(); // Reload the page
+}
+  
+      // Fetch and display popular movies on initial load
+      fetchMovies(apiUrl);
+  
+      // Load user lists from local storage on initial load
+      loadUserLists();
+  
+      // Add event listener to search input
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+          const query = searchInput.value;
+          const searchUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}&type=movie&page=1`;
+          fetchMovies(searchUrl);
+        }
+      });
+  
+      document.getElementById('nav-home').addEventListener('click', function() {
+        // Reload the page when the home button is clicked
+        location.reload();
+      });
+  
+      document.getElementById('nav-library').addEventListener('click', () => {
+        // Handle Library button click
+      });
+  
+      document.getElementById('nav-friends').addEventListener('click', () => {
+        // Handle Friends button click
+      });
+  
+      document.getElementById('nav-history').addEventListener('click', () => {
+        // Handle History button click
+      });
+  
+      document.getElementById('create-list').addEventListener('click', () => {
+        // Show the input field for the list name
+        document.getElementById('list-input-container').style.display = 'flex';
+        document.getElementById('list-name-input').focus();
+      });
+  
+      document.getElementById('save-list-name').addEventListener('click', () => {
+        const listName = document.getElementById('list-name-input').value.trim();
+        if (listName) {
+          // Save the new list to local storage
+          saveUserList(listName);
+          // Add the new list to the DOM
+          addUserListToDOM(listName);
+          // Clear the input field and hide the container
+          document.getElementById('list-name-input').value = '';
+          document.getElementById('list-input-container').style.display = 'none';
+        }
+      });
+  
+      // Optional: Handle pressing Enter in the input field
+      document.getElementById('list-name-input').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          document.getElementById('save-list-name').click();
+        }
+      });
+    });
   </script>
+
 </body>
 </html>
