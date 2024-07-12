@@ -188,7 +188,20 @@ nav{
     height: 65vh;
     display: flex;
 }
-
+::placeholder {
+    color: rgb(255, 255, 255);
+    opacity: 1; /* Firefox */
+    font-family: 'Poppins';
+    font-size: 1vw;
+    font-weight: 500;
+  }
+  
+  ::-ms-input-placeholder { /* Edge 12 -18 */
+    color: rgb(255, 255, 255);
+    font-family: 'Poppins';
+    font-size: 1vw;
+    font-weight: 500;
+  }
 .content{
     text-wrap: nowrap;
     padding-left: 5vw;
@@ -250,27 +263,31 @@ button:hover{
     /* gap: 20px; */
 }
 .dots{
+    padding: 4px;
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 .dots span{
+    margin: 1px;
     height: 2px;
     width: 2px;
-    background-color: black;
+    background-color: white;
 }
 .circle{
     /* margin: 50px; */
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     border-radius: 50%;
-    border: 2px solid  white;
+    border: 1.5px solid  white;
     background-color: #000;
 }
 
 .active-circle{
-    border: 4px solid  white;
-
+    box-shadow: 3px 4px 20px 0px #000000a1;
+    height: 35px;
+    width: 35px;
+    border: 3px solid white;
 }
 
 .side-nav{
@@ -316,11 +333,20 @@ button:hover{
 }
 footer{
     /* height: 20vh; */
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
     display: flex;
     gap: 2vw;
     align-items: center;
     padding-right: 5%;
     justify-content: flex-end;
+}
+.Indicator {
+    position: absolute;
+    top: 30px;
+    left: 50px;
 }
 .watch-parent{
     width: 131px;
@@ -373,6 +399,12 @@ footer{
     .search-box{
         display: none;
     }
+    #search-input{
+        display: none;
+    }
+    .iconimg{
+        display: none;
+    }
     .logo{
         margin-right: 13.5rem;
     }
@@ -414,6 +446,9 @@ footer{
         height: 97%;
         justify-content: space-between;
         align-items: end;
+        padding-left: 15px;
+        padding-right: 15px;
+
     }
     .socials{
         flex-direction: row;
@@ -474,5 +509,17 @@ footer{
     }
     .menunavopt:hover a{
         color: #000;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .opt {
+        zoom: 85%;
+    }
+    .side-nav {
+        zoom: 70%;
+        top: -12px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
